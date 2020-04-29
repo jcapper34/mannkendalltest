@@ -1,9 +1,13 @@
 import scipy.stats as st
+import numpy as np
 from collections import namedtuple
 from math import sqrt
 
 ## Seasonal Kendall Test ##
 def sk_test(vals, alpha=0.05, period=12):
+    if isinstance(vals, list):
+        vals = np.asarray(vals)
+
     s_prime = 0
     total_variance = 0
     for season in range(period):
